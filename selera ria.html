@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selera Ria - Kuliner Indonesia Autentik</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'selera-gold': '#D4A574',
+                        'selera-dark': '#2C1810',
+                        'selera-cream': '#F5F1E8',
+                        'selera-orange': '#E07B39',
+                        'selera-brown': '#8B5A2B'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-scale:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .menu-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .menu-card:hover::before {
+            opacity: 1;
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4A574 0%, #F5E6D3 50%, #D4A574 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="font-body bg-selera-cream text-selera-dark overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-utensils text-selera-gold text-2xl"></i>
+                    <span class="font-display text-2xl font-bold text-white tracking-wider">SELERA RIA</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-selera-gold transition-colors font-medium">Beranda</a>
+                    <a href="#about" class="text-white hover:text-selera-gold transition-colors font-medium">Tentang</a>
+                    <a href="#menu" class="text-white hover:text-selera-gold transition-colors font-medium">Menu</a>
+                    <a href="#gallery" class="text-white hover:text-selera-gold transition-colors font-medium">Galeri</a>
+                    <a href="#contact" class="text-white hover:text-selera-gold transition-colors font-medium">Kontak</a>
+                </div>
+                <button class="bg-selera-gold text-white px-6 py-2 rounded-full hover:bg-selera-orange transition-colors font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Pesan Sekarang
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-selera-cream z-0"></div>
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center parallax-bg"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div class="mb-6 floating">
+                <i class="fas fa-star text-selera-gold text-4xl mb-4"></i>
+            </div>
+            <h1 class="font-display text-5xl md:text-7xl font-bold text-white mb-6 text-shadow leading-tight">
+                Selera Ria
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-200 mb-4 font-light italic">
+                "Enak, Murah, Porsi Banyak"
+            </p>
+            <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+                Pengalaman kuliner autentik Indonesia dengan cita rasa klasik yang konsisten. 
+                Dari Tahu Telor hingga Seafood Premium, semua ada di sini.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-selera-gold text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-selera-orange transition-all transform hover:scale-105 shadow-xl">
+                    Lihat Menu
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-selera-dark transition-all">
+                    Reservasi Meja
+                </button>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-white text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white shadow-lg relative -mt-20 mx-4 md:mx-20 rounded-2xl z-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-4">
+            <div class="fade-in">
+                <div class="text-3xl font-bold text-selera-orange mb-2">15+</div>
+                <div class="text-gray-600 text-sm">Tahun Berpengalaman</div>
+            </div>
+            <div class="fade-in" style="animation-delay: 0.1s">
+                <div class="text-3xl font-bold text-selera-orange mb-2">50+</div>
+                <div class="text-gray-600 text-sm">Menu Variatif</div>
+            </div>
+            <div class="fade-in" style="animation-delay: 0.2s">
+                <div class="text-3xl font-bold text-selera-orange mb-2">10K+</div>
+                <div class="text-gray-600 text-sm">Pelanggan Puas</div>
+            </div>
+            <div class="fade-in" style="animation-delay: 0.3s">
+                <div class="text-3xl font-bold text-selera-orange mb-2">4.9</div>
+                <div class="text-gray-600 text-sm">Rating Google</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-4 md:px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="slide-in-left relative">
+                <div class="absolute -top-4 -left-4 w-24 h-24 bg-selera-gold/20 rounded-full"></div>
+                <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-selera-orange/20 rounded-full"></div>
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Interior Selera Ria" 
+                     class="rounded-2xl shadow-2xl relative z-10 w-full object-cover h-[500px]">
+                <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-xl z-20 max-w-xs hidden md:block">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-12 h-12 bg-selera-gold rounded-full flex items-center justify-center text-white">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-selera-dark">Hangat & Nyaman</p>
+                            <p class="text-sm text-gray-500">Suasana keluarga</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <div class="inline-block px-4 py-2 bg-selera-gold/10 rounded-full text-selera-brown font-semibold text-sm">
+                    TENTANG KAMI
+                </div>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-selera-dark leading-tight">
+                    Cita Rasa Klasik yang <span class="gold-gradient">Konsisten</span>
+                </h2>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    Selera Ria hadir dengan konsep kuliner Indonesia yang otentik. Kami menyajikan berbagai hidangan 
+                    legendaris seperti Tahu Telor, Cumi Asin, Udang Telur Asin, dan berbagai menu seafood premium 
+                    dengan harga yang terjangkau.
+                </p>
+                <p class="text-gray-600 text-lg leading-relaxed">
+                    Dengan tagline "Enak, Murah, Porsi Banyak", kami berkomitmen memberikan pengalaman bersantap 
+                    yang memuaskan bagi setiap pelanggan. Suasana hangat dan pelayanan ramah membuat Selera Ria 
+                    menjadi pilihan tepat untuk makan bersama keluarga dan teman.
+                </p>
+                
+                <div class="grid grid-cols-2 gap-6 pt-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-selera-gold/20 rounded-lg flex items-center justify-center text-selera-brown flex-shrink-0">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-selera-dark">Bahan Segar</h4>
+                            <p class="text-sm text-gray-500">Setiap hari dipilih dengan teliti</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 bg-selera-gold/20 rounded-lg flex items-center justify-center text-selera-brown flex-shrink-0">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-selera-dark">Resep Turun Temurun</h4>
+                            <p class="text-sm text-gray-500">Kelezatan yang terjaga</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Menu -->
+    <section id="menu" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-16">
+                <span class="text-selera-brown font-semibold tracking-wider uppercase text-sm">Menu Andalan</span>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-selera-dark mt-3">
+                    Pilihan yang <span class="italic text-selera-orange">Menggugah Selera</span>
+                </h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">
+                    Berbagai hidangan istimewa yang telah menjadi favorit pelanggan Selera Ria
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Menu Item 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover-scale cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Tahu Telor" 
+                         class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-selera-gold font-semibold text-sm mb-1">Signature Dish</span>
+                        <h3 class="text-white font-display text-2xl font-bold mb-2">Tahu Telor Terenak</h3>
+                        <p class="text-gray-300 text-sm mb-3">Tahu goreng dengan telur dan saus spesial khas Selera Ria</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-selera-gold font-bold text-xl">Rp 35.000</span>
+                            <button class="bg-white text-selera-dark px-4 py-2 rounded-full text-sm font-semibold hover:bg-selera-gold hover:text-white transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-selera-orange text-white px-3 py-1 rounded-full text-xs font-bold">
+                        BEST SELLER
+                    </div>
+                </div>
+
+                <!-- Menu Item 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover-scale cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Seafood" 
+                         class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-selera-gold font-semibold text-sm mb-1">Seafood Premium</span>
+                        <h3 class="text-white font-display text-2xl font-bold mb-2">Cumi Saus Padang</h3>
+                        <p class="text-gray-300 text-sm mb-3">Cumi segar dengan saus padang pedas manis yang kaya rasa</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-selera-gold font-bold text-xl">Rp 55.000</span>
+                            <button class="bg-white text-selera-dark px-4 py-2 rounded-full text-sm font-semibold hover:bg-selera-gold hover:text-white transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu Item 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg hover-scale cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1534939561126-855b8675edd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Udang" 
+                         class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <span class="text-selera-gold font-semibold text-sm mb-1">Favorit Keluarga</span>
+                        <h3 class="text-white font-display text-2xl font-bold mb-2">Udang Telur Asin</h3>
+                        <p class="text-gray-300 text-sm mb-3">Udang gurih dengan balutan telur asin yang creamy</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-selera-gold font-bold text-xl">Rp 60.000</span>
+                            <button class="bg-white text-selera-dark px-4 py-2 rounded-full text-sm font-semibold hover:bg-selera-gold hover:text-white transition-colors">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                        HOT
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <button class="border-2 border-selera-brown text-selera-brown px-8 py-3 rounded-full font-semibold hover:bg-selera-brown hover:text-white transition-all">
+                    Lihat Semua Menu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-selera-cream">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-4xl font-bold text-selera-dark">Galeri Selera Ria</h2>
+                <p class="text-gray-600 mt-3">Momen-momen kelezatan yang telah kami sajikan</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="space-y-4">
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-48 object-cover" alt="Food 1">
+                    </div>
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover" alt="Food 2">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover" alt="Food 3">
+                    </div>
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-48 object-cover" alt="Food 4">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-48 object-cover" alt="Food 5">
+                    </div>
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover" alt="Food 6">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-64 object-cover" alt="Food 7">
+                    </div>
+                    <div class="overflow-hidden rounded-xl shadow-md hover-scale">
+                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" class="w-full h-48 object-cover" alt="Food 8">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-selera-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/food.png')]"></div>
+        <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold">Apa Kata Mereka?</h2>
+                <p class="text-gray-400 mt-3">Testimoni dari pelanggan setia Selera Ria</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover-scale">
+                    <div class="flex text-selera-gold mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Tahu telornya juara! Porsinya besar banget, cocok buat sharing bareng teman-teman. Harganya juga ramah di kantong."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-selera-gold rounded-full flex items-center justify-center text-selera-dark font-bold">
+                            A
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Andi Wijaya</h4>
+                            <p class="text-sm text-gray-400">Food Blogger</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover-scale">
+                    <div class="flex text-selera-gold mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Udang telur asinnya enak banget, creamy dan gurih. Tempatnya juga nyaman buat makan bareng keluarga."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-selera-orange rounded-full flex items-center justify-center text-white font-bold">
+                            S
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Chen</h4>
+                            <p class="text-sm text-gray-400">Langganan Setia</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/10 hover-scale">
+                    <div class="flex text-selera-gold mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-300 mb-6 italic">"Seafoodnya fresh semua! Cumi saus padangnya pedasnya pas. Recommended buat yang suka seafood."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 bg-selera-gold rounded-full flex items-center justify-center text-selera-dark font-bold">
+                            B
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Budi Santoso</h4>
+                            <p class="text-sm text-gray-400">Pecinta Kuliner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <span class="text-selera-brown font-semibold tracking-wider uppercase text-sm">Kontak Kami</span>
+                    <h2 class="font-display text-4xl font-bold text-selera-dark mt-3 mb-6">
+                        Kunjungi Selera Ria
+                    </h2>
+                    <p class="text-gray-600 mb-8">
+                        Kami siap menyambut Anda dengan hidangan lezat dan pelayanan terbaik. 
+                        Hubungi kami untuk reservasi atau pesan antar.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-selera-gold/10 rounded-xl flex items-center justify-center text-selera-brown flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-selera-dark text-lg">Lokasi</h4>
+                                <p class="text-gray-600">Jl. G-Walk Citraland, Surabaya Barat<br>Indonesia</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-selera-gold/10 rounded-xl flex items-center justify-center text-selera-brown flex-shrink-0">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-selera-dark text-lg">Telepon</h4>
+                                <p class="text-gray-600">+62 812-3456-7890</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-selera-gold/10 rounded-xl flex items-center justify-center text-selera-brown flex-shrink-0">
+                                <i class="fas fa-clock text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-selera-dark text-lg">Jam Operasional</h4>
+                                <p class="text-gray-600">Setiap Hari: 10.00 - 22.00 WIB</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-selera-dark text-white rounded-full flex items-center justify-center hover:bg-selera-gold transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-selera-dark text-white rounded-full flex items-center justify-center hover:bg-selera-gold transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-selera-dark text-white rounded-full flex items-center justify-center hover:bg-selera-gold transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-selera-cream p-8 rounded-2xl shadow-lg">
+                    <h3 class="font-display text-2xl font-bold text-selera-dark mb-6">Pesan Meja</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-selera-gold focus:border-transparent outline-none transition-all" placeholder="Masukkan nama Anda">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Tanggal</label>
+                                <input type="date" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-selera-gold focus:border-transparent outline-none transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Jumlah Orang</label>
+                                <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-selera-gold focus:border-transparent outline-none transition-all">
+                                    <option>2 Orang</option>
+                                    <option>3-4 Orang</option>
+                                    <option>5-8 Orang</option>
+                                    <option>8+ Orang</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Catatan Khusus</label>
+                            <textarea rows="3" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-selera-gold focus:border-transparent outline-none transition-all" placeholder="Permintaan khusus..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-selera-gold text-white py-4 rounded-lg font-semibold hover:bg-selera-orange transition-colors shadow-lg">
+                            Konfirmasi Reservasi
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-selera-dark text-white py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-utensils text-selera-gold text-2xl"></i>
+                        <span class="font-display text-2xl font-bold">SELERA RIA</span>
+                    </div>
+                    <p class="text-gray-400 max-w-sm">
+                        Menyajikan kelezatan kuliner Indonesia dengan cita rasa autentik, 
+                        porsi melimpah, dan harga terjangkau sejak 2008.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Menu Populer</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-selera-gold transition-colors">Tahu Telor</a></li>
+                        <li><a href="#" class="hover:text-selera-gold transition-colors">Cumi Saus Padang</a></li>
+                        <li><a href="#" class="hover:text-selera-gold transition-colors">Udang Telur Asin</a></li>
+                        <li><a href="#" class="hover:text-selera-gold transition-colors">Ayam Goreng</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-lg mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-selera-gold transition-colors">Beranda</a></li>
+                        <li><a href="#about" class="hover:text-selera-gold transition-colors">Tentang Kami</a></li>
+                        <li><a href="#menu" class="hover:text-selera-gold transition-colors">Menu</a></li>
+                        <li><a href="#contact" class="hover:text-selera-gold transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2024 Selera Ria. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-selera-dark/95', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-selera-dark/95', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.hover-scale').forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(20px)";
+            el.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
